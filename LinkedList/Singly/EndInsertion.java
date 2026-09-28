@@ -1,49 +1,53 @@
+package Singly;
 class Node{
     int data; 
     Node next;
 }
 
-public class EndDeletion {
+public class EndInsertion {
     public static void main(String[] args) {
         Node first = new Node();
         Node second = new Node();
         Node third = new Node();
-        Node fourth = new Node();
 
         first.data = 10;
         second.data = 20; 
         third.data = 30;
-        fourth.data = 40;
 
         first.next = second;
         second.next = third;
-        third.next = fourth;
-        fourth.next = null;
+        third.next = null;
 
-        Node head = deleteAtEnd(first);
+        Node head = insertAtEnd(first, 40);
         Node current = head;
 
         while (current != null) {
             System.out.println(current.data);
-            current = current.next;    
+            current = current.next;   
         }
     }
 
-    public static Node deleteAtEnd(Node head) {
+    public static Node insertAtEnd(Node head, int value) {
+        Node newNode = new Node();
+        newNode.data = value;
+        newNode.next = null;
         if(head == null){
-            return null;
-        }
-
-        if (head.next == null) {
-            return null;
+            head = newNode;
+            return head;
         }
 
         Node current = head;
-        while(current.next.next != null){
+
+        while(current.next != null){
             current = current.next;
         }
-        current.next = null;
-            
+
+        current.next = newNode;
+
         return head;
     }
 }
+
+
+
+    

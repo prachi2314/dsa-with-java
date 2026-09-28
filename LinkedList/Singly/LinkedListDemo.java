@@ -1,3 +1,4 @@
+package Singly;
 class Node{ 
     int data; 
     Node next;

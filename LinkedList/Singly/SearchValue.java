@@ -1,9 +1,10 @@
+package Singly;
 class Node{
     int data; 
     Node next;
 }
 
-public class MiddleNode {
+public class SearchValue {
     public static void main(String[] args) {
         Node first = new Node();
         Node second = new Node();
@@ -20,19 +21,19 @@ public class MiddleNode {
         third.next = fourth;
         fourth.next = null;
 
-        Node result = findMiddle(first);
-        System.out.println(result.data);
+        boolean result = search(first, 50);
+        System.out.println(result);
     }
 
-    public static Node findMiddle(Node head) {
-        Node slow = head;
-        Node fast = head;
+    public static boolean search(Node head, int target) {
+        Node current = head;
+        while (current != null) {
+            if (current.data == target) {
+                return true;
+            }
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+            current = current.next;
         }
-
-        return slow;
+        return false;
     }
 }

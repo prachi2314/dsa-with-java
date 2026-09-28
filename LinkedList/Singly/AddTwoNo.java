@@ -1,17 +1,18 @@
+package Singly;
 class Node{
     int data;
     Node next;
 }
 
-public class MergeList {
+public class AddTwoNo {
     public static void main(String[] args) {
         Node first1 = new Node();
         Node second1 = new Node();
         Node third1 = new Node();
 
-        first1.data = 10;
-        second1.data = 30;
-        third1.data = 50;
+        first1.data = 1;
+        second1.data = 3;
+        third1.data = 5;
 
         first1.next = second1;
         second1.next = third1;
@@ -27,9 +28,9 @@ public class MergeList {
         Node second2 = new Node();
         Node third2 = new Node();
 
-        first2.data = 20;
-        second2.data = 40;
-        third2.data = 60;
+        first2.data = 2;
+        second2.data = 4;
+        third2.data = 6;
 
         first2.next = second2;
         second2.next = third2;
@@ -41,7 +42,7 @@ public class MergeList {
         // -------------------------
         // Merge both lists
         // -------------------------
-        Node mergedHead = merge(head1, head2);
+        Node mergedHead = addTwoNumbers(head1, head2);
 
 
         // -------------------------
@@ -50,32 +51,41 @@ public class MergeList {
         Node current = mergedHead;
 
         while (current != null) {
-            System.out.print(current.data + "  ");
+            System.out.print(current.data);
             current = current.next;
         }
 
-        System.out.println("null");
+        ;
         
     }
 
-    public static Node merge(Node list1, Node list2) {
+    public static Node addTwoNumbers(Node list1, Node list2) {
         Node dummy = new Node();
         Node current = dummy;
+        int carry = 0;
 
-        while (list1 !=null && list2!=null) {
-            if(list1.data<list2.data){
-            current.next = list1;
-            list1 = list1.next;
-            }else{
-                current.next = list2;
+        while (list1!=null || list2!=null || carry!=0) {
+            int value1 = 0;
+            int value2 = 0;
+
+            if (list1!=null) {
+                value1 = list1.data;
+                list1 = list1.next;
+            }
+
+            if (list2!=null) {
+                value1 = list2.data;
                 list2 = list2.next;
             }
 
-            current = current.next;
-        }
-        
+            int sum = value1+value2+carry;
+            int digit = sum%10;
+            carry = sum/10;
 
-        current.next = (list1 != null) ?list1:list2;
+            current.next = new Node();
+            current = current.next;
+            current.data = digit;
+        }
         return dummy.next;
     }
 }

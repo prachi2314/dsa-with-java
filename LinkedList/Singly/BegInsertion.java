@@ -1,9 +1,10 @@
+package Singly;
 class Node{
     int data; 
     Node next;
 }
 
-public class EndInsertion {
+public class BegInsertion {
     public static void main(String[] args) {
         Node first = new Node();
         Node second = new Node();
@@ -18,12 +19,26 @@ public class EndInsertion {
         third.next = null;
 
         Node head = insertAtEnd(first, 40);
+        
+        Node newhead = insertAtBeginning(head, 5);
+        head = newhead;
         Node current = head;
 
         while (current != null) {
             System.out.println(current.data);
             current = current.next;   
+            // current.next = insertAtEnd(head, 40); 
         }
+        
+        
+    }
+
+    public static Node insertAtBeginning(Node head, int value) {
+        Node s = new Node();
+        s.data = value; 
+        s.next = head;
+        head = s;
+        return head;
     }
 
     public static Node insertAtEnd(Node head, int value) {
@@ -46,7 +61,3 @@ public class EndInsertion {
         return head;
     }
 }
-
-
-
-    

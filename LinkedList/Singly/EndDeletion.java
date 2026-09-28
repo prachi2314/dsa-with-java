@@ -1,9 +1,10 @@
+package Singly;
 class Node{
     int data; 
     Node next;
 }
 
-public class SearchValue {
+public class EndDeletion {
     public static void main(String[] args) {
         Node first = new Node();
         Node second = new Node();
@@ -20,19 +21,30 @@ public class SearchValue {
         third.next = fourth;
         fourth.next = null;
 
-        boolean result = search(first, 50);
-        System.out.println(result);
+        Node head = deleteAtEnd(first);
+        Node current = head;
+
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;    
+        }
     }
 
-    public static boolean search(Node head, int target) {
-        Node current = head;
-        while (current != null) {
-            if (current.data == target) {
-                return true;
-            }
+    public static Node deleteAtEnd(Node head) {
+        if(head == null){
+            return null;
+        }
 
+        if (head.next == null) {
+            return null;
+        }
+
+        Node current = head;
+        while(current.next.next != null){
             current = current.next;
         }
-        return false;
+        current.next = null;
+            
+        return head;
     }
 }
