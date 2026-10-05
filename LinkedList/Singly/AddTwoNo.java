@@ -55,7 +55,7 @@ public class AddTwoNo {
             current = current.next;
         }
 
-        ;
+        
         
     }
 
