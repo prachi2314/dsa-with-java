@@ -67,7 +67,6 @@ class InsertionBefore{
 
             }
         
-        
         return head;
     }
 }
